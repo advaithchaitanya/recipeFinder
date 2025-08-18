@@ -1,0 +1,53 @@
+<div
+  id="canvas1"
+  class="min-h-[100vh] py-10 px-4 xl:w-[80%] md:w-[90%] m-auto bg-gradient-to-br from-yellow-400 via-yellow-400 to-yellow-100 rounded-3xl shadow-2xl backdrop-blur-sm"
+>
+  <!-- Form Container -->
+  <div class="bg-white/70 rounded-2xl p-6 shadow-lg backdrop-blur-sm mb-10">
+    <form (submit)="searchMeal(); $event.preventDefault()" id="form" class="flex flex-col gap-4 sm:flex-row items-center justify-between">
+      <label class="font-bold text-xl w-full sm:w-auto" for="userInput">Enter Food:</label>
+      <input
+        [(ngModel)]="userInput"
+        name="userInput"
+        type="text"
+        id="userInput"
+        class="rounded-full h-12 w-full sm:w-[60%] text-lg px-4 border-2 border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-200"
+        placeholder="E.g., Pasta, Biriyani, Sushi"
+      />
+      <button
+        type="submit"
+        class="bg-pink-500 hover:bg-pink-600 text-white font-bold h-12 px-6 rounded-full transition-all duration-200 shadow-md"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+
+  <!-- Spinner -->
+  <div *ngIf="loading" class="flex justify-center items-center mb-10">
+    <div class="animate-spin w-12 h-12 border-4 border-dashed rounded-full border-x-blue-500 border-y-cyan-500"></div>
+  </div>
+
+  <!-- Dishes Grid -->
+  <div id="dishes" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+    <div 
+      *ngFor="let meal of meals; let i = index"
+      class="bg-white relative backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl cursor-pointer p-4"
+      [attr.data-aos]="'fade-up'"
+      (click)="selectMeal(meal.strMeal)"
+      
+    >
+    <div (click)="search.addToFavs(meal)" class="text-right absolute top-0 z-10 right-0">
+      <button class="btn bg-red-400 text-white font-bold transition-all hover:rotate-90 w-10 aspect-square rounded-b-full">+</button>
+    </div>
+      <img (click)="search.toggleByCard(meal)"
+        [src]="meal.strMealThumb"
+        alt="{{ meal.strMeal }}"
+        class="w-[80%] md:w-full aspect-square m-auto object-cover rounded-lg mb-3"
+        [attr.data-aos]="'fade-down'"
+        [attr.data-aos-duration]="'100'"
+      />
+      <h2 (click)="search.toggleByCard(meal)"  class="font-bold text-lg text-center text-gray-800">{{ meal.strMeal }}</h2>
+    </div>
+  </div>
+</div>

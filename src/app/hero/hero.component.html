@@ -1,0 +1,111 @@
+<div
+  data-aos="fade-down"
+  data-aos-duration="1000"
+  id="hero"
+  class="md:w-[85%] mx-auto min-h-screen flex flex-col gap-16"
+>
+  <!-- 🍽️ Hero Section -->
+  <section
+    data-aos="fade-down"
+    data-aos-duration="1000"
+    class="bg-gradient-to-br from-yellow-100/80 via-[#fff719]/70 to-orange-200/80 backdrop-blur-xl text-center py-24 px-6 rounded-3xl shadow-2xl border border-yellow-300"
+  >
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-xl">
+      Welcome to <span class="text-[#EF4444]">Bite Club</span>
+    </h1>
+    <p class="text-2xl md:text-3xl text-[#4B2E2E] mb-12 font-medium">
+      Satisfy your cravings. Discover your inner foodie. 🍔✨
+    </p>
+    <div class="w-[75%] md:w-[40%] mx-auto">
+      <button routerLink="/catalog"
+        class="w-full bg-[#EF4444] hover:bg-[#F97316] text-white font-semibold px-8 py-4 rounded-full shadow-xl backdrop-blur-md transition-transform transform hover:scale-105 duration-300"
+      >
+        🍱 View Catalog
+      </button>
+    </div>
+  </section>
+  
+  <section
+    data-aos="zoom-in-up"
+    data-aos-duration="1000"
+    id="recipes"
+    class="bg-white/60 backdrop-blur-md py-20 px-8 rounded-3xl shadow-xl border border-yellow-200"
+  >
+    <h2 class="text-5xl font-bold text-center text-[#EF4444] mb-16">🔥 Featured Dishes</h2>
+    <div class="grid gap-10 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+      <div class="rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 bg-white/80 backdrop-blur-lg border border-[#fcd34d]/40">
+        <img src="https://imgs.search.brave.com/yvKJoml_X2gjJzW53wgcxRp67bpefRW1DjPbfL2ZQAs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5jbm4uY29tL2Fw/aS92MS9pbWFnZXMv/c3RlbGxhci9wcm9k/LzE3MDMwMjE0NTAx/MS1wZW5hbmctYXNz/YW0tbGFrc2EtbWFs/YXlzaWEuanBnP3E9/d18xMTEwLGNfZmls/bA" class="w-full h-60 object-cover" />
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-bold mb-2 text-[#4B2E2E]">Malaysian Laksa 🍜</h3>
+          <p class="text-gray-700">A spicy coconut noodle soup bursting with flavor and soul.</p>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 bg-white/80 backdrop-blur-lg border border-[#fcd34d]/40">
+        <img src="https://imgs.search.brave.com/LX7uHDlK5AX3H_cwXGzO92AHU_efeUzNySTQ_sgpezI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/YnNjZWR1Y2F0aW9u/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxOS8wNy9TdGVh/a19hbmRfa2lkbmV5/X3BpZV9hdF90aGVf/V2hpdGVfSGFydF9J/bm5fTW9yZXRvbl9F/c3NleF9FbmdsYW5k/XzAyLmpwZw" class="w-full h-60 object-cover" />
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-bold mb-2 text-[#4B2E2E]">Steak & Kidney Pie 🥧</h3>
+          <p class="text-gray-700">A rich British classic wrapped in golden pastry and nostalgia.</p>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 bg-white/80 backdrop-blur-lg border border-[#fcd34d]/40">
+        <img src="https://imgs.search.brave.com/czulbaj-9u96dIwduOE4juH3xVbPKV363Ik-1ZZb3HM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YnNjZWR1Y2F0aW9u/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxOS8wNy9DaGlj/a2VuX1Rpa2thX01h/c2FsYS0wMS5qcGc" class="w-full h-60 object-cover" />
+        <div class="p-6 text-center">
+          <h3 class="text-2xl font-bold mb-2 text-[#4B2E2E]">Chicken Tikka Masala 🍛</h3>
+          <p class="text-gray-700">Creamy, dreamy, spicy chicken that dances on your taste buds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 🎠 Carousel Section -->
+  <section
+    data-aos="fade-up"
+    data-aos-duration="600"
+    data-aos-delay="300"
+    id="carousel-section"
+    class="bg-gradient-to-tr from-[#ff8fa3]/30 to-[#ffffff]/60 py-14 px-6 rounded-3xl shadow-2xl backdrop-blur-lg border border-pink-200"
+    >
+    <div *ngIf="!hasfav" class="text-4xl font-bold text-center mb-10 text-[#EF4444] drop-shadow-sm">
+      We have <span class="text-black">Yams 🍠</span>
+    </div>
+    <div *ngIf="hasfav" class="text-4xl font-bold text-center mb-10 text-[#EF4444] drop-shadow-sm">
+      Your <span class="text-black">Popular Picks ❤️</span>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto overflow-hidden rounded-3xl shadow-xl border border-[#ef4444]/20">
+      <div
+        id="carousel-images"
+        class="flex transition-transform duration-700 ease-in-out"
+        [ngStyle]="{ transform: 'translateX(-' + currentIndex * 100 + '%)' }"
+      >
+        <div
+          *ngFor="let img of carouselImages"
+          class="w-full flex-shrink-0"
+        >
+          <img
+            [src]="img"
+            alt="Delicious Dish"
+            class="w-full h-96 object-cover rounded-3xl"
+          />
+        </div>
+      </div>
+
+      <!-- Carousel Buttons -->
+      <button
+        (click)="prevSlide()"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/60 hover:bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg text-[#EF4444] hover:scale-105 transition duration-200"
+      >
+        <i class="fa-solid fa-circle-left text-2xl"></i>
+      </button>
+      <button
+        (click)="nextSlide()"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/60 hover:bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg text-[#EF4444] hover:scale-105 transition duration-200"
+      >
+        <i class="fa-solid fa-circle-right text-2xl"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- 🧆 Recipe Grid Section -->
+</div>

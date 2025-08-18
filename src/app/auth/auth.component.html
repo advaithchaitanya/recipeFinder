@@ -1,0 +1,119 @@
+<div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-100 px-4 py-10 font-sans">
+  <!-- <div>hey</div> -->
+<div *ngIf="currentUser" class="flex items-center gap-3 mb-6 bg-white/40 px-4 py-3 rounded-full shadow-lg backdrop-blur-sm">
+  <img [src]="currentUser.photoURL" alt="user photo" class="w-12 h-12 rounded-full border-2 border-orange-500 shadow" />
+  <div class="text-left">
+    <p class="text-md font-semibold text-orange-900">
+      {{ getGreeting() }}, {{ currentUser.displayName?.split(' ')[0] }}! 👋
+    </p>
+    <p class="text-sm text-orange-600">{{ currentUser.email }}</p>
+  </div>
+</div>
+
+  <!-- 🍊 Welcome Box -->
+  <div data-aos="zoom-in" class="bg-orange-600/90 backdrop-blur-xl rounded-3xl shadow-2xl p-10 w-full max-w-md text-white text-center space-y-6">
+
+    <h2 class="text-4xl font-extrabold">Welcome to <span class="text-yellow-300">ChefChat</span> 👨‍🍳</h2>
+
+    <!-- 🔐 Sign-In -->
+    <ng-container *ngIf="!isLoggedIn && !showFormAfterSignIn">
+      <button (click)="signInWithGoogle()"
+        class="bg-white text-black font-semibold px-6 py-3 rounded-xl shadow-xl hover:bg-white/90 transition flex items-center justify-center gap-3 mx-auto">
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-6 h-6">
+        Sign in with Google
+      </button>
+      <p class="text-white/80 mt-3 text-sm italic">Please sign in to enter the chat 🍳</p>
+    </ng-container>
+
+    <!-- 🧍 User Info Form -->
+    <div *ngIf="showFormAfterSignIn" class="space-y-4">
+      <h3 class="text-xl font-bold text-orange-100">Tell us who you are! 👇</h3>
+
+      <input [(ngModel)]="nickname"
+             type="text"
+             placeholder="Your Nickname"
+             class="w-full px-4 py-3 rounded-lg bg-white text-orange-900 placeholder:text-orange-500 border border-orange-300 shadow" />
+
+      <select [(ngModel)]="role"
+              class="w-full px-4 py-3 rounded-lg bg-white text-orange-900 border border-orange-300 shadow">
+        <option disabled value="">Select your role</option>
+        <option value="Chef">👨‍🍳 Chef</option>
+        <option value="Foodie">🍽️ Foodie</option>
+      </select>
+
+      <button (click)="submitProfile()"
+              class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl shadow-md w-full transition">
+        Let’s Go 🚀
+      </button>
+    </div>
+
+    <!-- ✅ Logged In -->
+    <ng-template [ngIf]="isLoggedIn">
+      <p class="text-lg font-medium">You're logged in! 👋</p>
+      <button (click)="logout()"
+        class="mt-3 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg shadow-md transition">
+        Logout
+      </button>
+    </ng-template>
+  </div>
+
+  <!-- ✏️ Edit Profile Button -->
+  <button *ngIf="isLoggedIn && !showFormAfterSignIn" (click)="tog()"
+    class="bg-red-600 hover:bg-red-700 text-white py-3 mt-5 px-5 rounded-full shadow-md transition">
+    ✏️ Edit Profile
+  </button>
+
+  <!-- 🔧 Edit Profile Panel -->
+  <div *ngIf="isLoggedIn && !showFormAfterSignIn" 
+       [ngClass]="a ? 'left-0' : 'left-full'" 
+       class="h-screen w-screen transition-all duration-500 ease-in-out flex items-center justify-center absolute top-0 z-50 backdrop-blur-xl">
+    <button (click)="tog()" class="absolute top-4 right-6 bg-orange-600 text-white px-4 py-2 rounded-full hover:bg-orange-700 shadow-md">X</button>
+
+    <div class="w-full max-w-md bg-white/90 p-6 rounded-2xl shadow-2xl text-orange-900 space-y-4">
+      <h3 class="text-2xl font-bold text-center">Update Your Profile 📝</h3>
+
+      <input [(ngModel)]="nickname"
+             type="text"
+             placeholder="Update Nickname"
+             class="w-full px-4 py-3 rounded bg-white border border-orange-400 placeholder-orange-500 shadow" />
+
+      <select [(ngModel)]="role"
+              class="w-full px-4 py-3 rounded bg-white border border-orange-400 text-orange-900 shadow">
+        <option disabled value="">Select Role</option>
+        <option value="Chef">👨‍🍳 Chef</option>
+        <option value="Foodie">🍽️ Foodie</option>
+      </select>
+
+      <button (click)="updateProfile()"
+              class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-bold shadow transition-all w-full">
+        Save Changes ✅
+      </button>
+    </div>
+  </div>
+
+  <!-- 🌐 Active Users Grid -->
+  <div class="w-full max-w-6xl mt-14 bg-white/70 rounded-xl p-8 shadow-2xl backdrop-blur-lg" *ngIf="isLoggedIn">
+    <h3 class="text-3xl font-bold text-center text-orange-800 mb-8">Active Chefs & Foodies 🔥</h3>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <li *ngFor="let i of usersu" class="bg-white p-4 rounded-xl shadow-lg flex flex-col items-center text-center">
+        <img [src]="i.photoURL" alt="{{i.name}}" class="w-20 h-20 rounded-full border-2 border-orange-500 mb-4 shadow">
+        <h4 class="text-lg font-bold text-orange-800">{{ i.nickname || i.name }}</h4>
+        <p class="text-sm text-orange-600 font-medium">{{ i.role }}</p>
+        <p class="text-xs text-gray-500 truncate w-full">{{ i.email }}</p>
+      </li>
+    </ul>
+
+    <!-- 🚀 Marquee Animation -->
+    <!-- <div class="overflow-hidden mt-10 relative">
+      <ul class="flex gap-6 animate-marquee whitespace-nowrap px-2 py-4">
+        <li *ngFor="let i of doubledUsers" class="bg-white/80 p-4 rounded-xl shadow-md flex flex-col items-center text-center min-w-[200px]">
+          <img [src]="i.photoURL" alt="{{i.name}}" class="w-16 h-16 rounded-full border-2 border-orange-500 mb-3">
+          <h4 class="text-md font-semibold text-gray-800">{{ i.nickname || i.name }}</h4>
+          <p class="text-sm font-medium text-orange-600">{{ i.role }}</p>
+          <p class="text-xs text-gray-500 truncate w-full">{{ i.email }}</p>
+        </li>
+      </ul>
+    </div> -->
+  </div>
+</div>

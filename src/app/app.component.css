@@ -1,0 +1,6 @@
+.active{
+    transition: all 0.5s ease-in-out;
+}
+.card{
+    background:rgba(255, 45, 45, 0.679);
+}

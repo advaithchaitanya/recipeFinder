@@ -1,0 +1,88 @@
+<nav class="sticky top-0 left-0 w-full bg-white shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+
+      <!-- Logo -->
+      <div routerLink="/" id="nav" class="flex items-center space-x-4 cursor-pointer">
+        <div class="w-10 h-10 bg-yellow-300 rounded-full border-4 border-black"></div>
+        <h1 class="text-2xl font-bold">
+          Bite <span class="text-red-600">Club</span>
+        </h1>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex space-x-6 items-center">
+        <button routerLink="/search" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg transition">Search</button>
+        <button routerLink="/catalog" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition">Catalog</button>
+        <button routerLink="/fav" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold px-4 py-2 rounded-lg transition">View Favorites</button>
+        <button routerLink="/chat" class="bg-amber-400 hover:bg-amber-500 text-white font-semibold px-4 py-2 rounded-lg transition">Chat</button>
+        <button routerLink="/auth" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg transition">
+          <i class="fa-solid fa-circle-user"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <!-- <div id="navbtn" class="md:hidden">
+        <button *ngIf="!isMobileMenuOpen" (click)="toggleMobileMenu()" class="text-black focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div> -->
+      <!-- <div
+  *ngIf="isMobileMenuOpen"
+  class="md:hidden h-screen justify-center fixed top-0 right-0 flex flex-col space-y-4 mt-4 px-4 pb-4 bg-white/70 backdrop-blur-2xl shadow-md"
+>
+  <div class="text-right absolute top-0 right-5 font-extrabold"><button (click)="toggleMobileMenu()">X</button></div>
+  <button routerLink="/search" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg transition">Search</button>
+  <button routerLink="/catalog" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-lg transition">Catalog</button>
+  <button routerLink="/fav" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold px-4 py-2 rounded-lg transition">View Favorites</button>
+  <button routerLink="/chat" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold px-4 py-2 rounded-lg transition">Chat</button>
+  <button routerLink="/auth" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg transition">
+    <i class="fa-solid fa-circle-user"></i>
+  </button>
+</div> -->
+
+</div>
+</div>
+</nav>
+<div routerLink="/chatbot" class="fixed hidden md:block xl:w-[5%] md:w-[10%] w-[12%] cursor-pointer shadow-2xl rounded-full bottom-[10%] right-[1%] z-[999]">
+  <img width="100%" class="rounded-full " src="https://imgs.search.brave.com/QHCEdTwqpNy9T8W19MNjHHpq13ceprQVTEeaIiU-NBk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ2/NTMyMzc3Ny92ZWN0/b3IvY2hlZi1yb2Jv/dC1pY29uLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1FZGVp/bmZYeXJrcnVmdFBo/c1h6TVdmb2l6ZFFz/NE0xdHdnRXdubzBq/d3pBPQ" alt="">
+</div>
+
+<!-- 🌟 Mobile Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full backdrop-blur-lg z-50 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] md:hidden">
+  <div class="flex justify-around items-center py-2 px-3 text-xs font-medium text-gray-700">
+
+    <!-- Search -->
+    <a routerLink="/search" routerLinkActive="text-orange-500" class="flex flex-col items-center gap-1 transition hover:text-orange-500">
+      <i class="fa-solid fa-magnifying-glass text-xl text-black"></i>
+      <span class="text-orange-500">Search</span>
+    </a>
+
+    <!-- Catalog / Favorites -->
+    <a routerLink="/catalog" routerLinkActive="text-orange-500" class="flex flex-col items-center gap-1 transition hover:text-orange-500">
+      <i class="fa-regular fa-star text-xl text-black"></i>
+      <span class="text-orange-500">Catalog</span>
+    </a>
+
+    <!-- ChatBot (Center bubble) -->
+    <a routerLink="/chatbot" class="relative -top-5 bg-white rounded-full shadow-xl p-1 border-4 border-orange-400 transition transform hover:scale-110">
+      <img src="https://imgs.search.brave.com/QHCEdTwqpNy9T8W19MNjHHpq13ceprQVTEeaIiU-NBk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ2/NTMyMzc3Ny92ZWN0/b3IvY2hlZi1yb2Jv/dC1pY29uLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1FZGVp/bmZYeXJrcnVmdFBo/c1h6TVdmb2l6ZFFz/NE0xdHdnRXdubzBq/d3pBPQ" alt="ChatBot" class="w-12 h-12 rounded-full" />
+    </a>
+
+    <!-- Chat -->
+    <a routerLink="/chat" routerLinkActive="text-orange-500" class="flex flex-col items-center gap-1 transition hover:text-orange-500">
+      <i class="fa-solid fa-comment-dots text-xl text-black"></i>
+      <span class="text-orange-500">Chat</span>
+    </a>
+
+    <!-- Profile -->
+    <a routerLink="/auth" routerLinkActive="text-orange-500" class="flex flex-col items-center gap-1 transition hover:text-orange-500">
+      <i class="fa-solid fa-circle-user text-xl text-black"></i>
+      <span class="text-orange-500">Account</span>
+    </a>
+    
+  </div>
+</nav>

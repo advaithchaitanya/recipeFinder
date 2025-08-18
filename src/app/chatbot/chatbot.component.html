@@ -1,0 +1,22 @@
+<div class="max-w-3xl mx-auto py-8 px-4 font-sans">
+  <h2 class="text-3xl font-bold mb-4 text-orange-600 text-center">ChefChat 🍽️</h2>
+
+  <!-- Chat display -->
+  <div class="bg-white border rounded-xl p-4 h-[70vh] overflow-y-auto space-y-4 shadow-inner">
+    <div *ngFor="let msg of chatHistory" [ngClass]="msg.role === 'user' ? 'text-right' : 'text-left'">
+      <div
+        [ngClass]="msg.role === 'user' ? 'bg-blue-500 text-white ml-auto' : 'bg-gray-200 text-black mr-auto'"
+        class="inline-block px-4 py-2 rounded-xl max-w-[80%] whitespace-pre-wrap">
+        {{ msg.text }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat input -->
+  <form (submit)="sendMessage(); $event.preventDefault()" class="mt-4 flex gap-2">
+    <input [(ngModel)]="inputMessage" name="input" placeholder="Ask anything, foodie or chef related..." class="flex-1 border rounded px-4 py-2 focus:outline-orange-400" />
+    <button [disabled]="loading" type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded">
+      {{ loading ? 'Thinking...' : 'Send' }}
+    </button>
+  </form>
+</div>
