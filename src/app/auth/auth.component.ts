@@ -46,12 +46,6 @@ export class AuthComponent implements OnInit {
   ) {
     AOS.init();
   }
-  getGreeting(): string {
-  const hour = new Date().getHours();
-  if (hour < 12) return 'Good morning';
-  if (hour < 18) return 'Good afternoon';
-  return 'Good evening';
-}
   ngOnInit(): void {
   AOS.init();
   this.isLoggedIn = this.cookieService.check('access_token');
@@ -64,6 +58,12 @@ export class AuthComponent implements OnInit {
       this.usersu = await this.getAllUsers();
     }
   });
+}
+  getGreeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'Good morning';
+  if (hour < 18) return 'Good afternoon';
+  return 'Good evening';
 }
   get doubledUsers() {
   return [...this.usersu, ...this.usersu];

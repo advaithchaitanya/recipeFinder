@@ -27,7 +27,7 @@ export class ChatbotComponent {
     this.inputMessage = '';
     this.loading = true;
 
-    const API_KEY = 'AIzaSyCrfTRsygEaIl6ndzu3FJrbFAfMyg5n37M'; // 🔐 Replace safely later
+    const API_KEY = 'AIzaSyCJ94YdgbTNnkmf0QgItK7oKYz1d_1iagU'; // 🔐 Replace safely later
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
     try {

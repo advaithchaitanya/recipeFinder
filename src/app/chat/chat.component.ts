@@ -25,14 +25,15 @@ export class ChatComponent implements OnInit {
   newMessage = '';
   isSidebarOpen = false;
 
+  constructor(private firestore: Firestore, private auth: Auth, private router: Router,private cookieService:CookieService) {}
 
 chefGroups: string[] = ['Chef Alpha', 'Chef Beta', 'Chef Gamma', 'Chef Delta', 'Chef Omega'];
 // Example groups
 
-  constructor(private firestore: Firestore, private auth: Auth, private router: Router,private cookieService:CookieService) {}
 
   async ngOnInit() {
       this.isSidebarOpen = window.innerWidth >= 768;
+      console.log(this.auth);
     this.auth.onAuthStateChanged(async (user) => {
         const token = this.cookieService.get('access_token');
 
